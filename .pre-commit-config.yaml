@@ -1,0 +1,16 @@
+---
+
+repos:
+  - repo: local
+    hooks:
+      - id: alejandra
+        name: alejandra
+        description: Format Nix code with alejandra
+        entry: alejandra
+        language: system
+        files: \.nix$
+        always_run: true
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.18
+    hooks:
+      - id: shellcheck
