@@ -31,7 +31,7 @@
           cob = "checkout -b";
           coke = "commit -a -s -m";
           cokewogpg = "commit --no-gpg-sign -a -s -m";
-          com = "checkout $(git default-branch)";
+          com = "!git checkout $(git default-branch)";
           credit = ''!f() { git commit --amend --author "$1 <$2>" -C HEAD; }; f'';
           dc = "diff --cached";
           default-branch = "!git symbolic-ref refs/remotes/origin/HEAD | cut -f4 -d/";
