@@ -82,6 +82,7 @@ in {
           ll = "ls -lha";
           rot13 = "tr \"[A-Za-z]\" \"[N-ZA-Mn-za-m]\"";
           serve_this = "${pkgs.python3}/bin/python -m http.server";
+          tf = "terraform";
           v = "nvim";
           vi = "nvim";
           vim = "nvim";
