@@ -60,7 +60,7 @@
             (final: prev: {
               inherit
                 (channels.nixpkgs-unstable)
-                awscli
+                awscli2
                 nix-diff
                 shellcheck
                 ;
@@ -102,7 +102,7 @@
         devShell = channels.nixpkgs.mkShell {
           buildInputs = with channels.nixpkgs; [
             alejandra
-            awscli
+            awscli2
             git
             nix-diff
             pre-commit

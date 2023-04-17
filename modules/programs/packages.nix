@@ -13,7 +13,7 @@
         arandr
         aria2
         argocd
-        awscli
+        awscli2
         claws-mail
         discord
         docker-compose
