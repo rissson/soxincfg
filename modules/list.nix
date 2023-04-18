@@ -13,6 +13,7 @@
   # programs
   alacritty = ./programs/alacritty.nix;
   astronvim = ./programs/astronvim;
+  atuin = ./programs/atuin.nix;
   autorandr = ./programs/autorandr.nix;
   rbrowser = ./programs/rbrowser.nix;
   fzf = ./programs/fzf.nix;

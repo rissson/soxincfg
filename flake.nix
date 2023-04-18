@@ -60,6 +60,7 @@
             (final: prev: {
               inherit
                 (channels.nixpkgs-unstable)
+                atuin
                 awscli2
                 nix-diff
                 shellcheck
