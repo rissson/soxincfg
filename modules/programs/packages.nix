@@ -31,7 +31,6 @@
           kubectl
           kubernetes-helm
           kustomize
-          maven
           nix-index
           nix-zsh-completions
           nixpkgs-fmt
