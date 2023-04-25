@@ -2,6 +2,7 @@
   mode,
   config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkMerge [
@@ -31,7 +32,7 @@
         enable = true;
         enableZshIntegration = true;
       };
-      services.flameshot.enable = true;
+      services.flameshot.enable = pkgs.stdenv.isLinux;
     })
   ];
 }

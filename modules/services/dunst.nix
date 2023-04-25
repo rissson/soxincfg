@@ -8,7 +8,7 @@
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "home-manager") {
       services.dunst = {
-        enable = true;
+        enable = pkgs.stdenv.isLinux;
         settings = {
           global = {
             # Allow a small subset of html markup:

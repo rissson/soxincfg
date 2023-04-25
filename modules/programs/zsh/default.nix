@@ -75,7 +75,9 @@ in {
           }
         ];
       };
+    }
 
+    (lib.optionalAttrs (mode == "NixOS") {
       programs.zsh = {
         shellAliases = {
           k = "kubectl";
@@ -97,7 +99,7 @@ in {
           weekend = "task \\(due:saturday or due:sunday or due:mondayT00:00\\)";
         };
       };
-    }
+    })
 
     (lib.optionalAttrs (mode == "NixOS") {
       programs.zsh = {

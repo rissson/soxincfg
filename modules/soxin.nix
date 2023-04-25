@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   soxin = {
     hardware = {
       bluetooth.enable = true;

@@ -73,7 +73,7 @@ in {
           inherit pkgs lib;
           config = cfg;
         })
-        {enable = true;};
+        {enable = pkgs.stdenv.isLinux;};
     })
   ];
 }

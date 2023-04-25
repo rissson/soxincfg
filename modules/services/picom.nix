@@ -1,12 +1,13 @@
 {
   mode,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "home-manager") {
       services.picom = {
-        enable = true;
+        enable = pkgs.stdenv.isLinux;
         fade = true;
         fadeDelta = 2;
         opacityRules = [

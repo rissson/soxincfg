@@ -37,7 +37,7 @@
     ${pkgs.coreutils}/bin/sleep 1
   '';
 in {
-  enable = true;
+  enable = pkgs.stdenv.isLinux;
   package = pkgs.i3;
 
   config = {

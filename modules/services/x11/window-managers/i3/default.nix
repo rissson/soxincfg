@@ -8,7 +8,7 @@
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "home-manager") {
       xsession = {
-        enable = true;
+        enable = pkgs.stdenv.isLinux;
 
         windowManager = {
           i3 = import ./i3-config.lib.nix {inherit pkgs lib;};

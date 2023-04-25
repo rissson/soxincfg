@@ -1,6 +1,7 @@
 {
   mode,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkMerge [
@@ -58,7 +59,7 @@
       };
 
       services.random-background = {
-        enable = true;
+        enable = pkgs.stdenv.isLinux;
         enableXinerama = true;
         display = "center";
         imageDirectory = "%h/.background-images";

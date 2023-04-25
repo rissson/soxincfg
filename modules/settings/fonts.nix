@@ -9,21 +9,24 @@
       fonts = {
         fontDir.enable = true;
 
-        fonts = with pkgs; [
-          powerline-fonts
-          twemoji-color-font
+        fonts = with pkgs;
+          [
+            powerline-fonts
+            twemoji-color-font
 
-          (nerdfonts.override {fonts = ["FiraCode"];})
+            (nerdfonts.override {fonts = ["FiraCode"];})
 
-          noto-fonts
-          noto-fonts-extra
-          noto-fonts-emoji
-          noto-fonts-cjk
+            noto-fonts
+            noto-fonts-extra
+            noto-fonts-emoji
+            noto-fonts-cjk
 
-          symbola
-          vegur
-          b612
-        ];
+            symbola
+            b612
+          ]
+          ++ (lib.optionals pkgs.stdenv.isLinux [
+            vegur
+          ]);
       };
     })
 
@@ -41,8 +44,8 @@
       };
     })
 
-    {
+    (lib.optionalAttrs (mode == "NixOS" || mode == "home-manager") {
       fonts.fontconfig.enable = true;
-    }
+    })
   ];
 }

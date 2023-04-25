@@ -8,7 +8,7 @@
   config = lib.mkMerge [
     {
       soxin.programs.autorandr = {
-        enable = true;
+        enable = pkgs.stdenv.isLinux;
       };
     }
 

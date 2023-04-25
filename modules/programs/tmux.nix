@@ -67,7 +67,9 @@ in {
           fzf-tmux-url
         ];
       };
+    }
 
+    (lib.optionalAttrs (mode == "NixOS" || mode == "home-manager") {
       programs.tmux = {
         clock24 = true;
         customPaneNavigationAndResize = true;
@@ -76,7 +78,7 @@ in {
         keyMode = "vi";
         shortcut = "t";
       };
-    }
+    })
 
     (lib.optionalAttrs (mode == "home-manager") {
       programs.tmux = {

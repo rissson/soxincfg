@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  config = lib.mkMerge [
+  config = lib.mkIf (pkgs.stdenv.isLinux) (lib.mkMerge [
     (lib.optionalAttrs (mode == "home-manager") {
       systemd.user.services.caffeine-ng = {
         Unit = {
@@ -22,5 +22,5 @@
         };
       };
     })
-  ];
+  ]);
 }

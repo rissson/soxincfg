@@ -11,17 +11,13 @@
       bc
       file
       gnumake
-      gptfdisk
       htop
       iftop
       inetutils
-      iotop
       jq
       killall
       ldns
       lsof
-      lshw
-      mbuffer
       mtr
       ncdu
       pciutils
@@ -31,12 +27,18 @@
       tcpdump
       tree
       unzip
-      usbutils
       vim
       wget
       zip
     ]
-    ++ (optionals (mode == "NixOS") [
+    ++ (optionals pkgs.stdenv.isLinux [
+      gptfdisk
+      iotop
+      lshw
+      mbuffer
+      usbutils
+    ])
+    ++ (optionals (mode == "NixOS" || mode == "darwin") [
       tcptraceroute
       traceroute
     ]);

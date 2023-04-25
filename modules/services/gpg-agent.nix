@@ -1,6 +1,7 @@
 {
   mode,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkMerge [
@@ -15,7 +16,7 @@
 
     (lib.optionalAttrs (mode == "home-manager") {
       services.gpg-agent = {
-        enable = true;
+        enable = pkgs.stdenv.isLinux;
 
         enableSshSupport = true;
         enableExtraSocket = true;
