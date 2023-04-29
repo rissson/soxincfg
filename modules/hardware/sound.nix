@@ -7,20 +7,24 @@
 }: {
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "NixOS") {
-      sound.enable = true;
+      security.rtkit.enable = true;
+      services.pipewire = {
+        enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
+        jack.enable = true;
 
-      hardware = {
-        pulseaudio = {
-          enable = true;
-          package = lib.mkIf config.soxin.hardware.bluetooth.enable pkgs.pulseaudioFull;
-          systemWide = true;
-          zeroconf.discovery.enable = true;
+        config.pipewire = {
+          "context.properties" = {
+            "link.max-buffers" = 16;
+          };
         };
       };
 
       environment.systemPackages = with pkgs; [
+        alsa-utils
         pavucontrol
-        pa_applet
       ];
 
       users.groups.pulse-access = {};
