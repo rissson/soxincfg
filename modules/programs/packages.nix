@@ -27,6 +27,7 @@
         glab
         gnucash
         gnuplot
+        go
         ipcalc
         jetbrains.datagrip
         jetbrains.idea-ultimate
