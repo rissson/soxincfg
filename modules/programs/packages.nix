@@ -45,6 +45,7 @@
         nixpkgs-fmt
         nixpkgs-review
         nmap
+        noaa-apt
         openboard
         openldap
         openssl
