@@ -14,5 +14,5 @@
 
   nix.gc.automatic = lib.mkForce false;
 
-  services.xserver.videoDrivers = lib.mkBefore ["nvidia" "nouveau"];
+  services.xserver.videoDrivers = lib.mkForce ["nvidia"];
 }
