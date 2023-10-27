@@ -12,4 +12,6 @@
   ];
 
   nix.gc.automatic = lib.mkForce false;
+
+  services.xserver.displayManager.autoLogin.enable = lib.mkForce false;
 }
