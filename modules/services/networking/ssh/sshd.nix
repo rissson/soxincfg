@@ -8,11 +8,11 @@
     (lib.optionalAttrs (mode == "NixOS") {
       services.openssh = {
         enable = true;
-        forwardX11 = true;
-        passwordAuthentication = false;
-        extraConfig = ''
-          StreamLocalBindUnlink yes
-        '';
+        settings = {
+          X11Forwarding = true;
+          PasswordAuthentication = false;
+          StreamLocalBindUnlink = true;
+        };
       };
     })
   ];

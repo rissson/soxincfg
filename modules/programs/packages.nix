@@ -64,7 +64,6 @@
         spotify
         stellarium
         stern
-        teams
         tokei
         thunderbird
         transmission
