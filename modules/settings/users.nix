@@ -17,6 +17,7 @@
     group = "mine";
     extraGroups =
       [
+        "adbusers"
         "audio"
         "builders"
         "dialout"
