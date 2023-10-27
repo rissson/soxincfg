@@ -12,6 +12,7 @@
 
   hosts = {
     x86_64-linux = [
+      "bar/beaver"
       "bar/horse"
       # "rsn/hedgehog"
     ];
