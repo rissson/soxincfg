@@ -17,7 +17,7 @@
       network = {
         enable = true;
         order = 30;
-        eth = ["enp4s0" "enp5s0" "enp0s20f0u2u2" "enp0s20f0u1u1"];
+        eth = ["eno1" "enp4s0" "enp5s0" "enp0s20f0u2u2" "enp0s20f0u1u1"];
         wlan = ["wlp1s0" "wlp4s0"];
       };
       cpu = {
