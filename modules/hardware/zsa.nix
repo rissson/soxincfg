@@ -1,16 +1,13 @@
 {
   mode,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "NixOS") {
-      services.udev.extraRules = ''
-        # ZSA keyboard
-        SUBSYSTEM=="usb", ATTR{idVendor}=="3297", GROUP="plugdev"
-        # ZSA Moonlander
-        SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", GROUP="plugdev"
-      '';
+      hardware.keyboard.zsa.enable = true;
+      environment.systemPackages = with pkgs; [wally-cli];
     })
   ];
 }
