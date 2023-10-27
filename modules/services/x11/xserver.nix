@@ -14,7 +14,8 @@
         # TODO: move this to keyboard
         xkbOptions = lib.concatStringsSep "," [
           "grp:alt_caps_toggle"
-          "caps:swapescape"
+          #"caps:swapescape"
+          "caps:escape"
         ];
 
         libinput = {
