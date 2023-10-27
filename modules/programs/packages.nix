@@ -5,6 +5,10 @@
   ...
 }: {
   config = lib.mkMerge [
+    (lib.optionalAttrs (mode == "NixOS") {
+      programs.adb.enable = true;
+    })
+
     (lib.optionalAttrs (mode == "home-manager") {
       home.packages = with pkgs; [
         apache-directory-studio
@@ -46,6 +50,19 @@
         nixpkgs-review
         nmap
         noaa-apt
+        (wrapOBS {
+          plugins = [
+            (obs-studio-plugins.droidcam-obs.overrideAttrs rec {
+              version = "2.2.0";
+              src = fetchFromGitHub {
+                owner = "dev47apps";
+                repo = "droidcam-obs-plugin";
+                rev = version;
+                sha256 = "sha256-2/NHYgoIalOty3KKSzdFfXrhwylR2XWwerJQFwA2o4o=";
+              };
+            })
+          ];
+        })
         openboard
         openldap
         openssl
@@ -64,6 +81,7 @@
         spotify
         stellarium
         stern
+        super-slicer-latest
         tokei
         thunderbird
         transmission
