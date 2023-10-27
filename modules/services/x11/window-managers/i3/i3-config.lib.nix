@@ -204,8 +204,8 @@ in {
       "${defaultModifier}+F1" = "exec firefox";
       "${defaultModifier}+F4" = "exec pcmanfm";
       # pulseaudio controls
-      "XF86AudioRaiseVolume" = "exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ false, exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
-      "XF86AudioLowerVolume" = "exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ false, exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
+      # "XF86AudioRaiseVolume" = "exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ false, exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%";
+      # "XF86AudioLowerVolume" = "exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ false, exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%";
       "XF86AudioMute" = "exec ${nosid} ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
       # screenshots
       "Print" = "exec ${nosid} ${pkgs.flameshot}/bin/flameshot full -c -p \"/home/risson/Pictures/Screenshots\"";
