@@ -39,6 +39,7 @@
         inkscape
         imagemagick
         kubectl
+        kubectl-view-secret
         kubernetes-helm
         kustomize
         libreoffice
@@ -98,6 +99,9 @@
         yq
 
         vim
+
+        wineWowPackages.stable
+        winetricks
       ];
     })
   ];
