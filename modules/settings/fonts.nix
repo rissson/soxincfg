@@ -23,15 +23,22 @@
           symbola
           vegur
           b612
+
+          corefonts
+          liberation_ttf
+          vistafonts
+          wine64Packages.fonts
         ];
       };
     })
 
     (lib.optionalAttrs (mode == "NixOS") {
       fonts = {
-        enableDefaultFonts = true;
+        enableDefaultPackages = true;
         enableGhostscriptFonts = true;
 
+        fontconfig.allowType1 = true;
+        fontconfig.allowBitmaps = true;
         fontconfig.defaultFonts = {
           monospace = [
             "FiraCode Nerd Font Mono"
