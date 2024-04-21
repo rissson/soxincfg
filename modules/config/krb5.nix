@@ -12,6 +12,7 @@
           dns_fallback = true;
           dns_canonicalize_hostname = false;
           rnds = false;
+          default_ccache_name = "KEYRING:persistent:%{uid}";
         };
 
         realms = {
