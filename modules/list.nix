@@ -42,7 +42,6 @@
   gpgAgent = ./services/gpg-agent.nix;
   i3 = ./services/x11/window-managers/i3;
   locker = ./services/locker.nix;
-  openafs = ./services/openafs.nix;
   picom = ./services/picom.nix;
   polybar = ./services/x11/window-managers/bar;
   printing = ./services/printing.nix;
