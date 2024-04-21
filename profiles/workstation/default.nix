@@ -2,6 +2,7 @@
   mode,
   config,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkMerge [
@@ -14,6 +15,10 @@
       boot.supportedFilesystems = ["nfs"];
 
       programs.steam.enable = true;
+
+      environment.systemPackages = with pkgs; [
+        protontricks
+      ];
     })
 
     (lib.optionalAttrs (mode == "NixOS" || mode == "darwin") {
