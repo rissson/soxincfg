@@ -46,6 +46,10 @@
 
       channelsConfig = {
         allowUnfree = true;
+        permittedInsecurePackages = [
+          # Only used as a client
+          "vault-1.14.10"
+        ];
       };
       sharedOverlays = [
         inputs.alejandra.overlay
