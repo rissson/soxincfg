@@ -3,7 +3,7 @@
     hostId = "8425e349";
 
     interfaces = {
-      enp5s0 = {
+      enp6s0 = {
         useDHCP = true;
       };
       bar-client = {
@@ -14,7 +14,7 @@
 
     vlans = {
       bar-client = {
-        interface = "enp5s0";
+        interface = "enp6s0";
         id = 2050;
       };
     };
