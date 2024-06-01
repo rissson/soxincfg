@@ -17,6 +17,9 @@
         settings = {
           sync_address = "https://atuin.lama-corp.space";
           update_check = false;
+          sync = {
+            records = true;
+          };
         };
       };
 
