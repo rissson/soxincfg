@@ -14,24 +14,18 @@
           viAlias = true;
         })
 
+        alejandra
         cargo
+        deadnix
         ripgrep
         ruff
+        tree-sitter
+        statix
       ];
 
       xdg.configFile."nvim" = {
-        source = pkgs.fetchFromGitHub {
-          owner = "AstroNvim";
-          repo = "AstroNvim";
-          rev = "v3.40.3";
-          sha256 = "sha256-h019vKDgaOk0VL+bnAPOUoAL8VAkhY6MGDbqEy+uAKg=";
-        };
-        # needed to have the custom user config
+        source = ./config;
         recursive = true;
-      };
-
-      xdg.configFile."nvim/lua/user" = {
-        source = ./user;
       };
     })
   ];
