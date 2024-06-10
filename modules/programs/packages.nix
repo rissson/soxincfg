@@ -44,7 +44,6 @@
         kustomize
         libreoffice
         maven
-        minecraft
         nix-index
         nix-zsh-completions
         nixpkgs-fmt
@@ -86,7 +85,6 @@
         tokei
         thunderbird
         transmission
-        urlview
         vault
         velero
         virt-manager

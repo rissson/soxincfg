@@ -1,12 +1,12 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     nur.url = "github:nix-community/NUR";
-    fup.url = "github:gytis-ivaskevicius/flake-utils-plus/v1.4.0";
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
+    fup.url = "github:gytis-ivaskevicius/flake-utils-plus";
+    alejandra.url = "github:kamadorueda/alejandra";
     impermanence.url = "github:nix-community/impermanence";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -55,7 +55,6 @@
         inputs.alejandra.overlay
         nixpie.overlays.exec-tools
         nixpie.overlays.nixpie-utils
-        nixpie.overlays.pam_afs_session
       ];
       channels = {
         nixpkgs = {

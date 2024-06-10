@@ -12,14 +12,12 @@
         autoRepeatInterval = 30;
 
         # TODO: move this to keyboard
-        xkbOptions = lib.concatStringsSep "," [
-          "grp:alt_caps_toggle"
-          #"caps:swapescape"
-          "caps:escape"
-        ];
-
-        libinput = {
-          enable = true;
+        xkb = {
+          options = lib.concatStringsSep "," [
+            "grp:alt_caps_toggle"
+            #"caps:swapescape"
+            "caps:escape"
+          ];
         };
 
         displayManager = {
@@ -45,6 +43,9 @@
         windowManager = {
           i3.enable = true;
         };
+      };
+      services.libinput = {
+        enable = true;
       };
     })
 

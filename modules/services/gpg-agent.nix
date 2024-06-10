@@ -1,12 +1,14 @@
 {
   mode,
   lib,
+  pkgs,
   ...
 }: {
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "Nixos") {
       programs.gnupg.agent = {
         enable = true;
+        pinentryPackage = pkgs.pinentry-all;
 
         enableSSHSupport = true;
         enableExtraSocket = true;
@@ -16,6 +18,7 @@
     (lib.optionalAttrs (mode == "home-manager") {
       services.gpg-agent = {
         enable = true;
+        pinentryPackage = pkgs.pinentry-all;
 
         enableSshSupport = true;
         enableExtraSocket = true;

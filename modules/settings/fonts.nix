@@ -24,7 +24,6 @@
           vegur
           b612
 
-          corefonts
           liberation_ttf
           vistafonts
           wine64Packages.fonts
