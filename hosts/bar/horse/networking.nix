@@ -3,8 +3,22 @@
     hostId = "8425e349";
 
     interfaces = {
-      enp6s0 = {
-        useDHCP = true;
+      enp5s0 = {
+        ipv4 = {
+          addresses = [
+            {
+              address = "172.28.2.100";
+              prefixLength = 24;
+            }
+          ];
+          routes = [
+            {
+              address = "172.28.0.0";
+              prefixLength = 15;
+              via = "172.28.2.254";
+            }
+          ];
+        };
       };
       bar-client = {
         useDHCP = true;
@@ -14,7 +28,7 @@
 
     vlans = {
       bar-client = {
-        interface = "enp6s0";
+        interface = "enp5s0";
         id = 2050;
       };
     };
