@@ -8,27 +8,34 @@
     (lib.optionalAttrs (mode == "home-manager") {
       programs.atuin = {
         enable = true;
-        # TODO: uncomment once home-manager 23.05
-        enableZshIntegration = false;
-        # enableZshIntegration = true;
-        # flags = [
-        #   "--disable-up-arrow"
-        # ];
+        enableZshIntegration = true;
+        flags = [
+          "--disable-up-arrow"
+        ];
         settings = {
           sync_address = "https://atuin.lama-corp.space";
           update_check = false;
           sync = {
             records = true;
           };
+          daemon = {
+            enabled = true;
+          };
         };
       };
 
-      # TODO: remove once home-manager 23.05
-      programs.zsh.initExtra = ''
-        if [[ $options[zle] = on ]]; then
-          eval "$(${config.programs.atuin.package}/bin/atuin init zsh --disable-up-arrow)"
-        fi
-      '';
+      systemd.user.services.atuin-daemon = lib.mkIf config.programs.atuin.enable {
+        Unit = {Description = "atuin daemon";};
+
+        Install = {WantedBy = ["default.target"];};
+
+        Service = {
+          Restart = "on-failure";
+          Type = "exec";
+          Slice = "session.slice";
+          ExecStart = "${config.programs.atuin.package}/bin/atuin daemon";
+        };
+      };
     })
   ];
 }
