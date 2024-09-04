@@ -130,9 +130,26 @@
       device = "rpool/persist/docker";
       fsType = "zfs";
     };
+
+    "/home/risson/weed" = {
+      device = "https://cloud.lama-corp.space/remote.php/dav/files/4f63337fdf32875f43993ee929094394aeddce151046e5d96aa072450abcce56";
+      fsType = "davfs";
+      options = ["rw" "user" "noauto"];
+    };
   };
 
   swapDevices = [
     {device = "/dev/disk/by-uuid/ecdc99e4-1646-4a1d-bd4f-9e138340e080";}
   ];
+
+  services.davfs2 = {
+    enable = true;
+    davGroup = "wheel";
+    settings = {
+      globalSection = {
+        ignore_dav_header = true;
+        use_locks = false;
+      };
+    };
+  };
 }
