@@ -24,6 +24,7 @@
         "fuse"
         "pulse"
         "pulse-access"
+        "scanner"
         "users"
         "video"
       ]

@@ -32,6 +32,7 @@
         gnucash
         gnuplot
         go
+        img2pdf
         ipcalc
         jetbrains.datagrip
         jetbrains.idea-ultimate
