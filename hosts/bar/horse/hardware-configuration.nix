@@ -21,6 +21,7 @@
     directories = [
       "/var/lib/bluetooth"
       "/var/lib/libvirt"
+      "/var/lib/nixos"
 
       "/var/log"
     ];
