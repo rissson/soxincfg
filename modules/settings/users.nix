@@ -22,6 +22,7 @@
         "builders"
         "dialout"
         "fuse"
+        "gamemode"
         "pulse"
         "pulse-access"
         "scanner"

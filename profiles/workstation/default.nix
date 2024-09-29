@@ -14,7 +14,24 @@
 
       boot.supportedFilesystems = ["nfs"];
 
-      programs.steam.enable = true;
+      programs.steam = {
+        enable = true;
+      };
+
+      programs.gamemode = {
+        enable = true;
+        settings = {
+          general = {
+            softrealtime = "auto";
+            renice = 20;
+            ioprio = 0;
+          };
+          gpu = {
+            gpu_device = 1;
+            amd_performance_level = "high";
+          };
+        };
+      };
 
       environment.systemPackages = with pkgs; [
         protontricks
