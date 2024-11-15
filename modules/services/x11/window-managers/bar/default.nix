@@ -17,7 +17,7 @@
       network = {
         enable = true;
         order = 30;
-        eth = ["eno1" "enp4s0" "enp5s0" "enp6s0" "enp0s20f0u2u2" "enp0s20f0u1u1"];
+        eth = ["eno1" "enp4s0" "enp5s0" "enp6s0" "enp0s20f0u2u2" "enp0s20f0u1u1" "enp193s0f3u1"];
         wlan = ["wlp1s0" "wlp4s0"];
       };
       cpu = {
@@ -37,7 +37,7 @@
         order = 90;
         devices = [
           {
-            device = "BAT0";
+            device = "BAT1";
             fullAt = 97;
           }
         ];

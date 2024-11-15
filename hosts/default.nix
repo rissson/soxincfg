@@ -14,7 +14,7 @@
     x86_64-linux = [
       "bar/beaver"
       "bar/horse"
-      # "rsn/hedgehog"
+      "rsn/hedgehog"
     ];
     x86_64-darwin = [];
   };
