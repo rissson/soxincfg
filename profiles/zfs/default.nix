@@ -8,7 +8,7 @@
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "NixOS") {
       boot = {
-        kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+        kernelPackages = pkgs.linuxPackages_6_6;
         kernelParams = ["elevator=none"];
         supportedFilesystems = ["zfs"];
         loader.grub.zfsSupport = true;

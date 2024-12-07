@@ -11,7 +11,10 @@
         enable = true;
         userName = "Marc 'risson' Schmitt";
         userEmail = "marc.schmitt@risson.space";
-        gpgSigningKey = "marc.schmitt@risson.space";
+        signing = {
+          key = "marc.schmitt@risson.space";
+          signByDefault = true;
+        };
         lfs.enable = true;
       };
     }

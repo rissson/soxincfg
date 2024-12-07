@@ -11,7 +11,6 @@
     ./hardware-configuration.nix
     ./networking.nix
     ./gpu.nix
-    ./gpu2.nix
   ];
 
   nix.gc.automatic = lib.mkForce false;

@@ -30,6 +30,8 @@ in
             # TODO: add builder for darwin if we are evalutating
             # `x86_64-darwin` hosts
             inherit system;
+            mode = "NixOS";
+            specialArgs = {};
             modules = [
               # TODO: import core profile and such
               {

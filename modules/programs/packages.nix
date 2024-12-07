@@ -85,7 +85,7 @@
         super-slicer-latest
         tokei
         thunderbird
-        transmission
+        transmission_4
         vault
         velero
         virt-manager

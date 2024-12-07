@@ -9,7 +9,7 @@
       fonts = {
         fontDir.enable = true;
 
-        fonts = with pkgs; [
+        packages = with pkgs; [
           powerline-fonts
           twemoji-color-font
 
@@ -18,7 +18,7 @@
           noto-fonts
           noto-fonts-extra
           noto-fonts-emoji
-          noto-fonts-cjk
+          noto-fonts-cjk-sans
 
           symbola
           vegur

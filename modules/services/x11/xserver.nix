@@ -21,11 +21,6 @@
         };
 
         displayManager = {
-          defaultSession = "none+i3";
-          autoLogin = {
-            enable = true;
-            user = "risson";
-          };
           lightdm = {
             enable = true;
           };
@@ -42,6 +37,13 @@
 
         windowManager = {
           i3.enable = true;
+        };
+      };
+      services.displayManager = {
+        defaultSession = "none+i3";
+        autoLogin = {
+          enable = true;
+          user = "risson";
         };
       };
       services.libinput = {

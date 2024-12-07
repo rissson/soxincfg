@@ -9,7 +9,7 @@
       hardware.rtl-sdr.enable = true;
 
       environment.systemPackages = with pkgs; [
-        libusb
+        libusb1
         rtl-sdr
 
         gqrx

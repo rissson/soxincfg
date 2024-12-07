@@ -23,7 +23,6 @@
   packages = ./programs/packages.nix;
   ssh = ./programs/ssh.nix;
   starship = ./programs/starship.nix;
-  taskwarrior = ./programs/taskwarrior.nix;
   tmux = ./programs/tmux.nix;
   tmuxp = ./programs/tmuxp.nix;
   zsh = ./programs/zsh;
