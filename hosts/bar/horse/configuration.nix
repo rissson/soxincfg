@@ -24,4 +24,11 @@
 
   # services.tailscale.enable = true;
   networking.firewall.checkReversePath = "loose";
+  networking.extraHosts = "127.0.0.1 dev.authentik.company";
+  networking.wireless.enable = true;
+  networking.wireless.userControlled.enable = true;
+  networking.nameservers = ["172.29.2.254" "172.28.2.254"];
+  networking.dhcpcd.extraConfig = ''
+    nohook resolv.conf
+  '';
 }
