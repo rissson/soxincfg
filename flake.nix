@@ -64,6 +64,7 @@
                 (channels.nixpkgs-unstable)
                 atuin
                 awscli2
+                kicad
                 nix-diff
                 shellcheck
                 ;

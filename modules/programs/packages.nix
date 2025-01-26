@@ -39,6 +39,7 @@
         jdk
         inkscape
         imagemagick
+        kicad
         kubectl
         kubectl-view-secret
         kubernetes-helm
