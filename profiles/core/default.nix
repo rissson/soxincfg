@@ -79,11 +79,11 @@ in {
           trusted-users = ["root" "@wheel" "@builders"];
           substituters = [
             "https://nix-cache.s3.lama-corp.space"
-            "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr"
+            # "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr"
           ];
           trusted-public-keys = [
             "cache.nix.lama-corp.space:zXDtep4OcIi2/hkqNmA1UkAoDTGBZE/YvEQdT750L1M="
-            "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
+            # "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
           ];
         };
         gc = {
