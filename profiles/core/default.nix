@@ -49,13 +49,6 @@ in {
             layouts = [
               {
                 x11 = {
-                  layout = "fr";
-                  variant = "bepo";
-                };
-                console = {keyMap = "fr-bepo";};
-              }
-              {
-                x11 = {
                   layout = "us";
                   variant = "intl";
                 };
