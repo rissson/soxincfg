@@ -85,9 +85,17 @@ in {
           ### Lama Corp.
           "nucleus" = {
             user = "root";
-            hostname = "nucleus.fsn.lama.tel";
+            hostname = "nucleus.fsn.as212024.net";
+          };
+          "*.as212024.net" = {
+            user = "root";
+            proxyJump = "nucleus";
           };
           "*.lama.tel" = {
+            user = "root";
+            proxyJump = "nucleus";
+          };
+          "*.risson.net" = {
             user = "root";
             proxyJump = "nucleus";
           };
