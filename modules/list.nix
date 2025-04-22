@@ -38,6 +38,7 @@
   # services
   caffeine-ng = ./services/caffeine-ng.nix;
   dunst = ./services/dunst.nix;
+  easyeffects = ./services/easyeffects.nix;
   gpgAgent = ./services/gpg-agent.nix;
   i3 = ./services/x11/window-managers/i3;
   locker = ./services/locker.nix;
