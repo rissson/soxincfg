@@ -48,6 +48,7 @@
     "vm.swapiness" = 10;
   };
 
+  boot.loader.timeout = 60;
   boot.loader.grub = {
     enable = true;
     device = "nodev";
