@@ -52,6 +52,7 @@
     enable = true;
     device = "nodev";
     efiSupport = true;
+    useOSProber = true;
     enableCryptodisk = true;
     zfsSupport = true;
   };
