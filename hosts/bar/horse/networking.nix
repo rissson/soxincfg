@@ -17,18 +17,15 @@
               prefixLength = 15;
               via = "172.28.2.254";
             }
+            {
+              address = "209.112.97.0";
+              prefixLength = 24;
+              via = "172.28.2.254";
+            }
           ];
         };
       };
       bar-client = {
-        ipv4 = {
-          addresses = [
-            {
-              address = "172.29.2.100";
-              prefixLength = 24;
-            }
-          ];
-        };
         useDHCP = true;
         macAddress = "50:eb:f6:55:9d:18";
       };
