@@ -54,15 +54,7 @@
         noaa-apt
         (wrapOBS {
           plugins = [
-            (obs-studio-plugins.droidcam-obs.overrideAttrs rec {
-              version = "2.2.0";
-              src = fetchFromGitHub {
-                owner = "dev47apps";
-                repo = "droidcam-obs-plugin";
-                rev = version;
-                sha256 = "sha256-2/NHYgoIalOty3KKSzdFfXrhwylR2XWwerJQFwA2o4o=";
-              };
-            })
+            obs-studio-plugins.droidcam-obs
           ];
         })
         openboard

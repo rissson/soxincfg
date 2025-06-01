@@ -13,7 +13,7 @@
           powerline-fonts
           twemoji-color-font
 
-          (nerdfonts.override {fonts = ["FiraCode"];})
+          nerd-fonts.fira-code
 
           noto-fonts
           noto-fonts-extra

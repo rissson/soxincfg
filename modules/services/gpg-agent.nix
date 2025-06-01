@@ -18,7 +18,10 @@
     (lib.optionalAttrs (mode == "home-manager") {
       services.gpg-agent = {
         enable = true;
-        pinentryPackage = pkgs.pinentry-all;
+        pinentry = {
+          package = pkgs.pinentry-all;
+          program = "pinentry";
+        };
 
         enableSshSupport = true;
         enableExtraSocket = true;

@@ -38,11 +38,8 @@
     ''
       source "${pkgs.nur.repos.kalbasit.ls-colors}/ls-colors/bourne-shell.sh"
     ''
-    + (builtins.readFile (pkgs.substituteAll {
-      src = ./init-extra.zsh;
-
+    + (builtins.readFile (pkgs.replaceVars ./init-extra.zsh {
       fortune_bin = "${pkgs.fortune}/bin/fortune";
-      fzf_bin = "${pkgs.fzf}/bin/fzf-tmux";
       less_bin = "${pkgs.less}/bin/less";
     }));
 in {
@@ -116,7 +113,7 @@ in {
           size = 1000000000;
         };
 
-        initExtra = shellInit;
+        initContent = shellInit;
       };
 
       programs.command-not-found.enable = true;
