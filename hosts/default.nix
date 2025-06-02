@@ -7,7 +7,7 @@
   genAttrs' = func: values: builtins.listToAttrs (map func values);
 
   getHostname = path: lib.lists.last (lib.splitString "/" path);
-  getDomain = path: (builtins.head (lib.splitString "/" path)) + ".lama.tel";
+  getDomain = path: (builtins.head (lib.splitString "/" path)) + ".risson.net";
   getConfiguration = path: "${toString ./.}/${path}/configuration.nix";
 
   hosts = {
