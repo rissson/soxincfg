@@ -7,8 +7,8 @@
         ipv4 = {
           addresses = [
             {
-              address = "172.28.2.100";
-              prefixLength = 24;
+              address = "172.28.2.225";
+              prefixLength = 27;
             }
           ];
           routes = [
