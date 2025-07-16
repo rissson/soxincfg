@@ -20,21 +20,11 @@
         flake-utils-plus.follows = "fup";
       };
     };
-
-    nixpie = {
-      url = "git+https://gitlab.cri.epita.fr/cri/infrastructure/nixpie.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgsUnstable.follows = "nixpkgs-unstable";
-        nixpkgsMaster.follows = "nixpkgs-master";
-      };
-    };
   };
 
   outputs = inputs @ {
     self,
     soxin,
-    nixpie,
     nixpkgs,
     ...
   }:
@@ -52,8 +42,6 @@
       };
       sharedOverlays = [
         inputs.alejandra.overlay
-        nixpie.overlays.exec-tools
-        nixpie.overlays.nixpie-utils
       ];
       channels = {
         nixpkgs = {

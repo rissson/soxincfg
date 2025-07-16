@@ -78,12 +78,14 @@ in {
           system-features = ["nixos-test" "benchmark" "big-parallel" "kvm"];
           trusted-users = ["root" "@wheel" "@builders"];
           substituters = [
-            "https://nix-cache.s3.lama-corp.space"
+            # "https://nix-cache.s3.lama-corp.space"
             # "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr"
+            "https://hyprland.cachix.org"
           ];
           trusted-public-keys = [
-            "cache.nix.lama-corp.space:zXDtep4OcIi2/hkqNmA1UkAoDTGBZE/YvEQdT750L1M="
+            # "cache.nix.lama-corp.space:zXDtep4OcIi2/hkqNmA1UkAoDTGBZE/YvEQdT750L1M="
             # "cache.nix.cri.epita.fr:qDIfJpZWGBWaGXKO3wZL1zmC+DikhMwFRO4RVE6VVeo="
+            "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
           ];
         };
         gc = {
