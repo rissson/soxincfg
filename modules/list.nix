@@ -40,11 +40,10 @@
   dunst = ./services/dunst.nix;
   easyeffects = ./services/easyeffects.nix;
   gpgAgent = ./services/gpg-agent.nix;
-  hypridle = ./services/hypridle.nix;
   kanshi = ./services/kanshi.nix;
-  locker = ./services/locker.nix;
   printing = ./services/printing.nix;
   sshd = ./services/networking/ssh/sshd.nix;
+  swayidle = ./services/swayidle.nix;
   swww = ./services/swww.nix;
 
   # virtualisation
