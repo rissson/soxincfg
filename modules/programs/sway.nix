@@ -257,6 +257,10 @@ in {
         # fix the look of Java applications
         _JAVA_OPTIONS = "-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel";
       };
+
+      home.packages = with pkgs; [
+        wl-clipboard
+      ];
     })
   ];
 }
