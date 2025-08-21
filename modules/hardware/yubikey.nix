@@ -13,7 +13,10 @@
         yubikey-personalization-gui
       ];
 
+      hardware.gpgSmartcards.enable = true;
+
       services.pcscd.enable = true;
+      services.udev.packages = [pkgs.yubikey-personalization];
 
       security.pam.u2f = {
         enable = true;
