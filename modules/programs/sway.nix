@@ -241,6 +241,9 @@ in {
       xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
 
       home.sessionVariables = {
+        # See https://github.com/swaywm/sway/issues/3814
+        WLR_NO_HARDWARE_CURSORS = "1";
+
         XDG_SESSION_TYPE = "wayland";
 
         SDL_VIDEODRIVER = "wayland";
