@@ -16,8 +16,7 @@
           nerd-fonts.fira-code
 
           noto-fonts
-          noto-fonts-extra
-          noto-fonts-emoji
+          noto-fonts-color-emoji
           noto-fonts-cjk-sans
 
           symbola
@@ -25,7 +24,7 @@
           b612
 
           liberation_ttf
-          vistafonts
+          vista-fonts
           wine64Packages.fonts
         ];
       };

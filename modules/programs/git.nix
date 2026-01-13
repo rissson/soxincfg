@@ -9,6 +9,7 @@
     {
       soxin.programs.git = {
         enable = true;
+        package = pkgs.gitFull;
         userName = "Marc 'risson' Schmitt";
         userEmail = "marc.schmitt@risson.space";
         signing = {

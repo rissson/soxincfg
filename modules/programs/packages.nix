@@ -83,7 +83,6 @@
         velero
         virt-manager
         vlc
-        warsow
         wireshark
         wpa_supplicant_gui
         x11vnc

@@ -1,7 +1,6 @@
 {
   mode,
   lib,
-  pkgs,
   ...
 }: {
   config = lib.mkMerge [
@@ -9,9 +8,6 @@
       virtualisation.libvirtd = {
         enable = true;
         qemu.runAsRoot = false;
-        qemu.ovmf.packages = [
-          pkgs.OVMF.fd
-        ];
       };
       virtualisation.spiceUSBRedirection.enable = true;
 

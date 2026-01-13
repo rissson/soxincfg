@@ -10,7 +10,7 @@
         yubico-piv-tool
         yubikey-manager
         yubikey-personalization
-        yubikey-personalization-gui
+        yubioath-flutter
       ];
 
       hardware.gpgSmartcards.enable = true;
