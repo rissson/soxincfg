@@ -32,4 +32,6 @@
   networking.dhcpcd.extraConfig = ''
     nohook resolv.conf
   '';
+
+  services.netdata.enable = true;
 }
