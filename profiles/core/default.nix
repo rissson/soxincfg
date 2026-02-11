@@ -14,7 +14,6 @@
       gptfdisk
       htop
       iftop
-      inetutils
       iotop
       jq
       killall
@@ -37,6 +36,7 @@
       zip
     ]
     ++ (optionals (mode == "NixOS") [
+      iputils
       tcptraceroute
       traceroute
     ]);
