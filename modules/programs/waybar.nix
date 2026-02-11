@@ -23,62 +23,57 @@
               "sway/window"
             ];
             modules-right = [
-              "custom/disk"
-              "cpu"
-              "memory"
               "backlight"
               "pulseaudio"
-              "battery"
               "network"
+              "battery"
               "clock"
               "clock#utc"
-              "idle_inhibitor"
               "tray"
             ];
 
-            "custom/disk" = {
-              format = "Disk: {}";
-              interval = 60;
-              exec = "df -h --output=avail / | tail -1 | tr -d ' '";
-            };
-
-            cpu = {
-              interval = 1;
-              format = "CPU: {usage}%";
-            };
-
-            memory = {
-              format = "Mem: {}%";
-            };
-
             backlight = {
-              format = "{icon} {percent}%";
-              format-icons = ["🔅" "🔆"];
+              format = "<span color=\"#fbf1c7\">{icon}</span> {percent}%";
+              format-icons = ["" "" "" "" "" "" "" "" ""];
+              on-scroll-up = "brightnessctl s 1%+";
+              on-scroll-down = "brightnessctl s 1%-";
+              tooltip-format = "{percent}% screen brightness";
             };
 
             pulseaudio = {
               scroll-step = 5;
 
-              format = "{icon} {volume}% {format_source}";
-              format-muted = "🔇 {format_source}";
-              format-bluetooth = "{icon} {volume}% {format_source}";
-              format-bluetooth-muted = "{icon} {volume}% {format_source}";
-
-              format-source = " {volume}%";
-              format-source-muted = "";
-
+              format = "<span color=\"#fbf1c7\">{icon}</span>  {volume}% | {format_source}";
+              format-bluetooth = "<span color=\"#fbf1c7\"></span> {volume}% | {format_source}";
+              format-bluetooth-muted = "<span color=\"#fb4934\">󰝟 </span> | {format_source}";
+              format-muted = "<span color=\"#fb4934\">󰝟</span> | {format_source}";
+              format-source = "<span color=\"#fbf1c7\"></span> {volume}%";
+              format-source-muted = "<span color=\"#fb4934\"></span>";
               format-icons = {
                 headphone = "";
-                hands-free = "";
-                headset = "";
+                hands-free = "󱠰";
+                headset = "󰋎";
                 phone = "";
                 portable = "";
                 car = "";
-                default = ["🔈" "🔉" "🔊"];
+                default = ["" "" ""];
               };
 
               on-click = "uwsm app -- ${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle";
               on-click-right = "uwsm app -- ${pkgs.pulseaudio}/bin/pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+            };
+
+            network = {
+              family = "ipv4";
+              format = "{ifname}";
+              format-wifi = "<span color=\"#fbf1c7\"></span>  {essid}";
+              format-ethernet = "<span color=\"#fbf1c7\">󰈀</span>  {ipaddr}/{cidr}";
+              format-disconnected = "<span color=\"#fbf1c7\">󱛅</span>  Disconnected";
+              tooltip-format = "<span color=\"#fbf1c7\">󰛳</span>  {ifname} via {gwaddr}";
+              tooltip-format-wifi = "<span color=\"#fbf1c7\"></span>  {essid} ({signalStrength}%) \r   {ipaddr}/{cidr} ({ifname} via {gwaddr})";
+              tooltip-format-ethernet = "<span color=\"#fbf1c7\"></span>  {ifname}";
+              tooltip-format-disconnected = "Disconnected";
+              max-length = 50;
             };
 
             battery = {
@@ -87,25 +82,36 @@
                 warning = 20;
                 critical = 10;
               };
-              format = "{icon} {capacity}%";
-              format-charging = "⚡ {capacity}%";
+              format = "<span color=\"#fbf1c7\">{icon}</span> {capacity}%";
+              format-charging = "<span color=\"#fbf1c7\">󰢝</span> {capacity}%";
+              format-plugged = "<span color=\"#fbf1c7\"></span> {capacity}%";
               format-icons = ["" "" "" "" ""];
-            };
-
-            network = {
-              family = "ipv4";
-              format-wifi = " ({signalStrength}%) {essid}";
-              format-ethernet = "{ipaddr}/{cidr}";
-              format-linked = "{ifname} (No IP)";
-              format-disconnected = "Disconnected ⚠";
-              tooltip-format = "{ifname} via {gwaddr}";
             };
 
             #
             clock = {
               interval = 1;
               format = "{:%a %Y-%m-%d %H:%M:%S}";
-              tooltip-format = "{calendar}";
+              tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
+              calendar = {
+                mode = "month";
+                mode-mon-col = 3;
+                weeks-pos = "right";
+                on-scroll = 1;
+                on-click-right = "mode";
+                format = {
+                  months = "<span color='#ffead3'><b>{}</b></span>";
+                  days = "<span color='#ebdbb2'><b>{}</b></span>";
+                  weeks = "<span color='#83a598'><b>W{}</b></span>";
+                  weekdays = "<span color='#fabd2f'><b>{}</b></span>";
+                  today = "<span color='#d3869b'><b><u>{}</u></b></span>";
+                };
+              };
+              actions = {
+                on-click-right = "mode";
+                on-scroll-up = "shift_up";
+                on-scroll-down = "shift_down";
+              };
             };
 
             "clock#utc" = {
@@ -115,135 +121,120 @@
               tooltip-format = "{calendar}";
             };
 
-            idle_inhibitor = {
-              format = "{icon}";
-              format-icons = {
-                activated = "";
-                deactivated = "";
-              };
-              on-click-right = "loginctl lock-session";
-            };
             tray = {
-              spacing = 10;
+              spacing = 5;
             };
           }
         ];
 
         style = ''
-          * {
-            font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-            font-size: 12px;
-            margin: 0;
-            padding: 0;
-            border: none;
-            border-radius: 0;
-            box-shadow: none;
-            text-shadow: none;
-          }
+          @define-color text-critical #fb4934;
+          @define-color text-dark #282828;
+          @define-color text-normal #ffe7ff;
+          @define-color text-primary #d5c4a1;
+          @define-color text-highlight #fbf1c7;
 
-          window#waybar {
-            background-color: rgba(43, 44, 52, 0.8);
-            color: #ffffff;
-            transition: background-color 0.5s;
-          }
-
-          window#waybar.hidden {
-            opacity: 0.2;
-          }
-
-          #window {
-            font-family: 'Sarasa Gothic SC', sans-serif;
-          }
-
-          #clock,
-          #clock-utc {
-            background: #3b3f51;
-            color: #ffffff;
-            padding: 0px 8px;
-            border-radius: 4px;
-          }
-
-          #battery,
-          #cpu,
-          #custom-disk
-          #memory,
-          #backlight,
-          #network,
-          #pulseaudio,
-          #tray,
-          #mode,
-          #idle_inhibitor,
-          #keyboard-state,
-          #scratchpad {
-            padding: 0px 8px;
-            background-color: #3b3f51;
-            color: #ffffff;
-          }
-
-          #battery.charging{
-            background-color: #b5b4e2;
-          }
-
-          #battery.critical:not(.charging) {
-            background-color: #b54f4f;
-            animation: blink 0.5s linear infinite alternate;
-          }
+          @define-color background-critical #cc241d;
+          @define-color background-highlight #bdae93;
+          @define-color background-hover #a89984;
+          @define-color background-primary #1d2021;
 
           @keyframes blink {
             to {
-              background-color: #ffffff;
-              color: #3b3f51;
+              color: @text-critical;
             }
           }
 
-          #network.disconnected {
-            background-color: #b54f4f;
+          #battery.critical:not(.charging){
+            animation-name: blink;
+            animation-direction: alternate;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
           }
 
-          #pulseaudio.muted {
-            background-color: #3b3f51;
-            color: #b5b4e2;
+          #clock {
+            background-color: @background-highlight;
+            border-radius: 15px;
+            color: @text-dark;
+            margin-right: 6px;
           }
 
-          #tray {
-            background-color: #b5b4e2;
-            color: #282a36;
-          }
-
-          #tray>.passive {
-            -gtk-icon-effect: dim;
-            color: #6272a4;
-          }
-
-          #tray>.needs-attention {
-            background-color: #ff5555;
-            color: #ffffff;
-          }
-
-          #idle_inhibitor.activated {
-            background-color: #b5b4e2;
-            color: #3b3f51;
-          }
-
-          #workspaces button,
           #mode {
-            padding: 0px 8px;
-            background-color: transparent;
-            color: #ffffff;
+            color: @text-critical;
+            margin: 0;
+            padding: 0 0px 0px 15px;
           }
 
-          #workspaces button:hover,
+          #window {
+            padding: 0 15px;
+          }
+
+          #workspaces button {
+            border-radius: 5px;
+            border: 0px;
+            box-shadow: none;
+            color: @text-primary;
+            padding: 0 5px;
+            margin: 0 1px;
+            text-shadow: none;
+          }
+
+          #workspaces button:hover {
+            background: @background-hover;
+            color: @text-dark;
+          }
+
           #workspaces button.focused {
-            background-color: #6272a4;
-            box-shadow: inset 0 -3px #ffffff;
+            background-color: @background-highlight;
+            color: @text-dark;
           }
 
           #workspaces button.urgent {
-            background-color: #b54f4f;
+            background-color: @background-critical;
           }
 
-          label:focus {
-            background-color: #000000;
+          * {
+            border: none;
+            font-family: RobotoMono Nerd Font;
+            font-size: 12px;
+            font-weight: 500;
+          }
+
+          window#waybar {
+            color: @text-normal;
+            border-radius: 15px;
+            background: @background-primary;
+
+            /* Used during reloads */
+            transition-property: background;
+            transition-duration: 0.5s;
+          }
+
+          widget > * {
+            border-radius: 5px;
+            color: @text-primary;
+            margin: 0px 2px;
+            transition-duration: 0.2s;
+            transition-property: background;
+          }
+
+          .modules-right > widget > * {
+            padding: 0 10px;
+          }
+
+          .modules-right > widget > *:hover {
+            background: @background-hover;
+            color: @text-dark;
+          }
+
+          tooltip {
+            background: @background-primary;
+            border-radius: 15px;
+          }
+
+          tooltip label {
+            color: @text-normal;
           }
         '';
       };

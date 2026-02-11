@@ -236,6 +236,9 @@ in {
             "XF86PowerOff" = "exec uwsm app -- systemctl suspend";
           };
         };
+        extraConfig = ''
+          client.focused #4c7899 #bdae93 #282828
+        '';
       };
 
       xdg.configFile."uwsm/env".source = "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
