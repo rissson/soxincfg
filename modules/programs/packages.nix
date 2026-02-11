@@ -76,6 +76,7 @@
         stellarium
         stern
         super-slicer-latest
+        teamspeak3
         tokei
         thunderbird
         transmission_4
