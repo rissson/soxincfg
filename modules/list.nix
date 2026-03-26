@@ -7,7 +7,7 @@
   fonts = ./settings/fonts.nix;
   gtk = ./settings/gtk.nix;
   soxin = ./soxin.nix;
-  usersImplementation = ./settings/users.nix;
+  users-implementation = ./settings/users.nix;
 
   # programs
   alacritty = ./programs/alacritty.nix;
@@ -29,17 +29,18 @@
   zsh = ./programs/zsh;
 
   # hardware
-  intelBacklight = ./hardware/intel-backlight.nix;
+  intel-backlight = ./hardware/intel-backlight.nix;
+  nitrokey = ./hardware/nitrokey.nix;
   rtl-sdr = ./hardware/rtl-sdr.nix;
   sound = ./hardware/sound.nix;
   yubikey = ./hardware/yubikey.nix;
   zsa = ./hardware/zsa.nix;
 
   # services
-  displayManager = ./services/display-manager.nix;
+  display-manager = ./services/display-manager.nix;
   dunst = ./services/dunst.nix;
   easyeffects = ./services/easyeffects.nix;
-  gpgAgent = ./services/gpg-agent.nix;
+  gpg-agent = ./services/gpg-agent.nix;
   kanshi = ./services/kanshi.nix;
   printing = ./services/printing.nix;
   sshd = ./services/networking/ssh/sshd.nix;
