@@ -1,45 +1,61 @@
 {...}: {
   networking = {
     hostId = "8425e349";
+    useDHCP = false;
+  };
 
-    interfaces = {
-      enp5s0 = {
-        ipv4 = {
-          addresses = [
-            {
-              address = "172.28.2.225";
-              prefixLength = 27;
-            }
-          ];
-          routes = [
-            {
-              address = "172.28.0.0";
-              prefixLength = 15;
-              via = "172.28.2.254";
-            }
-            {
-              address = "209.112.97.0";
-              prefixLength = 24;
-              via = "172.28.2.254";
-            }
-          ];
-        };
-      };
-      bar-client = {
-        useDHCP = true;
-        macAddress = "50:eb:f6:55:9d:18";
+  systemd.network = {
+    enable = true;
+
+    links = {
+      "10-bar-client" = {
+        matchConfig.Name = "enp5s0";
       };
     };
 
-    vlans = {
-      bar-client = {
-        interface = "enp5s0";
-        id = 2050;
+    netdevs = {
+      "20-bar-mgmt" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "bar-mgmt";
+        };
+        vlanConfig.Id = 1;
+      };
+    };
+
+    networks = {
+      "10-bar-client" = {
+        matchConfig.Name = "enp5s0";
+        vlan = [
+          "bar-mgmt"
+        ];
+        networkConfig = {
+          DHCP = "ipv4";
+          IPv6AcceptRA = true;
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "20-bar-mgmt" = {
+        matchConfig.Name = "bar-mgmt";
+        address = ["172.28.2.225/27"];
+        routes = [
+          {
+            Destination = "172.28.0.0/15";
+            Gateway = "172.28.2.254";
+          }
+          {
+            Destination = "209.112.97.0/24";
+            Gateway = "172.28.2.254";
+          }
+        ];
+        networkConfig = {
+          IPv6AcceptRA = true;
+        };
       };
     };
   };
 
   boot.kernel.sysctl = {
-    "net.ipv6.conf.bar-client.ra_defrtr_metric" = 512;
+    "net.ipv6.conf.enp5s0.ra_defrtr_metric" = 512;
   };
 }
