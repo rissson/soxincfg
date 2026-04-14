@@ -8,35 +8,28 @@
     enable = true;
 
     links = {
-      "10-bar-client" = {
-        matchConfig.Name = "enp5s0";
-      };
-    };
-
-    netdevs = {
-      "20-bar-mgmt" = {
-        netdevConfig = {
-          Kind = "vlan";
-          Name = "bar-mgmt";
+      "10-lan-mgmt-0" = {
+        matchConfig = {
+          MACAddress = "00:e0:4c:50:00:65";
         };
-        vlanConfig.Id = 1;
+        linkConfig = {
+          Name = "lan-mgmt-0";
+        };
       };
     };
 
     networks = {
-      "10-bar-client" = {
-        matchConfig.Name = "enp5s0";
-        vlan = [
-          "bar-mgmt"
-        ];
+      "10-lan-mgmt-0" = {
+        matchConfig = {
+          Name = "lan-mgmt-0";
+        };
+        linkConfig = {
+          RequiredForOnline = false;
+        };
         networkConfig = {
-          DHCP = "ipv4";
+          LinkLocalAddressing = "ipv6";
           IPv6AcceptRA = true;
         };
-        linkConfig.RequiredForOnline = "routable";
-      };
-      "20-bar-mgmt" = {
-        matchConfig.Name = "bar-mgmt";
         address = ["172.28.2.225/27"];
         routes = [
           {
@@ -48,9 +41,18 @@
             Gateway = "172.28.2.254";
           }
         ];
+      };
+
+      "10-bar-client" = {
+        matchConfig.Name = "enp5s0";
+        vlan = [
+          "bar-mgmt"
+        ];
         networkConfig = {
+          DHCP = "ipv4";
           IPv6AcceptRA = true;
         };
+        linkConfig.RequiredForOnline = "routable";
       };
     };
   };
