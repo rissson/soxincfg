@@ -18,6 +18,8 @@
           cargo
           clang
           deadnix
+          docker-language-server
+          hadolint
           lua-language-server
           ruff
           tree-sitter
