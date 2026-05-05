@@ -20,6 +20,7 @@ return {
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.python.base" },
+  { import = "astrocommunity.pack.python.basedpyright" },
   { import = "astrocommunity.pack.python.black" },
   { import = "astrocommunity.pack.python.ruff" },
   { import = "astrocommunity.pack.rust" },
