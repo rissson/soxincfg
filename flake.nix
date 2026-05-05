@@ -38,7 +38,7 @@
         permittedInsecurePackages = [
           # required for teamspeak3
           "qtwebengine-5.15.19"
-          # Only used as a client
+          # Only used as a client
           "vault-1.14.10"
         ];
       };
