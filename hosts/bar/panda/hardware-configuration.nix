@@ -21,6 +21,7 @@
   environment.persistence."/persist" = {
     files = [
       "/etc/machine-id"
+      "/etc/zfs/zpool.cache"
     ];
   };
 
@@ -72,9 +73,19 @@
     };
   };
 
-  # boot.initrd.postDeviceCommands = lib.mkAfter ''
-  #   zfs rollback -r rpool/local/root@blank
-  # '';
+  boot.initrd.systemd.services.rollback = {
+    description = "Rollback root filesystem to a blank state on boot";
+    wantedBy = ["initrd.target"];
+    after = ["zfs-import-rpool.service"];
+    before = ["sysroot.mount"];
+    unitConfig = {
+      DefaultDependencies = "no";
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${config.boot.zfs.package}/sbin/zfs rollback -r rpool/local/root@blank";
+    };
+  };
 
   fileSystems = {
     "/" = {
