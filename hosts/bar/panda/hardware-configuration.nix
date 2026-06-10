@@ -18,14 +18,11 @@
     powertop.enable = lib.mkForce false;
   };
 
-  # environment.persistence."/persist" = {
-  #   directories = [
-  #     "/var/lib/bluetooth"
-  #   ];
-  #   files = [
-  #     "/etc/machine-id"
-  #   ];
-  # };
+  environment.persistence."/persist" = {
+    files = [
+      "/etc/machine-id"
+    ];
+  };
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -89,6 +86,13 @@
 
     "/nix" = {
       device = "rpool/local/nix";
+      fsType = "zfs";
+      options = ["zfsutil"];
+      neededForBoot = true;
+    };
+
+    "/persist" = {
+      device = "rpool/persist/persist";
       fsType = "zfs";
       options = ["zfsutil"];
       neededForBoot = true;
