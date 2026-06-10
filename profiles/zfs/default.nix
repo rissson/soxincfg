@@ -8,11 +8,14 @@
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "NixOS") {
       boot = {
-        kernelPackages = pkgs.linuxPackages_6_12;
+        kernelPackages = pkgs.linuxPackages_6_18;
         kernelParams = ["elevator=none"];
         supportedFilesystems = ["zfs"];
         loader.grub.zfsSupport = true;
+        zfs.forceImportRoot = false;
       };
+
+      systemd.services.zfs-mount.enable = false;
 
       services.zfs = {
         autoScrub = {

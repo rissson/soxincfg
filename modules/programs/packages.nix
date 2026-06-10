@@ -6,7 +6,9 @@
 }: {
   config = lib.mkMerge [
     (lib.optionalAttrs (mode == "NixOS") {
-      programs.adb.enable = true;
+      environment.systemPackages = with pkgs; [
+        android-tools
+      ];
     })
 
     (lib.optionalAttrs (mode == "home-manager") {
@@ -35,7 +37,7 @@
         img2pdf
         ipcalc
         jetbrains.datagrip
-        jetbrains.idea-ultimate
+        jetbrains.idea
         jdk
         inkscape
         imagemagick
@@ -76,7 +78,7 @@
         stellarium
         stern
         super-slicer-latest
-        teamspeak3
+        # teamspeak3
         tokei
         thunderbird
         transmission_4
@@ -92,7 +94,7 @@
 
         vim
 
-        wineWowPackages.stable
+        wineWow64Packages.stable
         winetricks
       ];
     })
