@@ -110,12 +110,6 @@
       options = ["zfsutil"];
     };
 
-    "/etc/nixos" = {
-      device = "rpool/local/etc/nixos";
-      fsType = "zfs";
-      options = ["zfsutil"];
-    };
-
     "/var/lib/docker" = {
       device = "rpool/local/var/lib/docker";
       fsType = "zfs";
