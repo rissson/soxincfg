@@ -148,8 +148,8 @@
       options = ["zfsutil"];
     };
 
-    "/var/logs" = {
-      device = "rpool/local/var/logs";
+    "/var/log" = {
+      device = "rpool/local/var/log";
       fsType = "zfs";
       options = ["zfsutil"];
     };
