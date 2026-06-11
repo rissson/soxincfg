@@ -31,6 +31,29 @@
               ];
             };
           }
+          {
+            profile = {
+              name = "bar-horse-default";
+              outputs = [
+                {
+                  criteria = "DP-1";
+                  mode = "1920x1080@60Hz";
+                  position = "0,0";
+                }
+                {
+                  criteria = "HDMI-A-1";
+                  mode = "1920x1080@60Hz";
+                  position = "1920,0";
+                }
+                {
+                  criteria = "DVI-D-1";
+                  mode = "1920x1080@60Hz";
+                  position = "3840,0";
+                  transform = "270";
+                }
+              ];
+            };
+          }
         ];
       };
     })
