@@ -1,6 +1,5 @@
 {
   mode,
-  config,
   pkgs,
   lib,
   ...
@@ -28,7 +27,6 @@
   ohMyZsh = {
     enable = true;
     plugins = [
-      "command-not-found"
       "git"
       "sudo"
     ];
@@ -116,7 +114,10 @@ in {
         initContent = shellInit;
       };
 
-      programs.command-not-found.enable = true;
+      programs.nix-index = {
+        enable = true;
+        enableZshIntegration = true;
+      };
     })
   ];
 }

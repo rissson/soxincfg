@@ -48,7 +48,6 @@
         kustomize
         libreoffice
         maven
-        nix-index
         nix-zsh-completions
         nixpkgs-fmt
         nixpkgs-review

@@ -4,15 +4,15 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nur.url = "github:nix-community/NUR";
     fup.url = "github:gytis-ivaskevicius/flake-utils-plus";
     alejandra.url = "github:kamadorueda/alejandra";
     impermanence.url = "github:nix-community/impermanence";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     soxin = {
       url = "github:SoxinOS/soxin";
@@ -29,7 +29,6 @@
   outputs = inputs @ {
     self,
     soxin,
-    nixpkgs,
     ...
   }:
     soxin.lib.mkFlake {
@@ -95,6 +94,9 @@
       ];
       extraNixosModules = [
         inputs.impermanence.nixosModules.impermanence
+      ];
+      extraHomeManagerModules = [
+        inputs.nix-index-database.homeModules.default
       ];
 
       hostDefaults = {
