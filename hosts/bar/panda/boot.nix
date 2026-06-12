@@ -99,4 +99,33 @@ with lib; let
   '';
 in {
   system.build.installBootLoader = lib.mkForce finalSystemdBootBuilder;
+
+  systemd.services.fwupd = {
+    environment.FWUPD_EFIAPPDIR = "/run/fwupd-efi";
+  };
+
+  systemd.services.fwupd-efi = {
+    description = "Sign fwupd EFI app for secure boot";
+    wantedBy = ["fwupd.service"];
+    partOf = ["fwupd.service"];
+    before = ["fwupd.service"];
+
+    unitConfig.ConditionPathIsDirectory = "/var/lib/sbctl";
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      RuntimeDirectory = "fwupd-efi";
+    };
+
+    script = ''
+      fwupd_efi=(${config.services.fwupd.package.fwupd-efi}/libexec/fwupd/efi/fwupd*.efi)
+      for efi in "''${fwupd_efi[@]}"; do
+        ${lib.getExe pkgs.sbctl} sign -o "/run/fwupd-efi/$(basename "$efi").signed" "$efi"
+      done
+    '';
+  };
+
+  services.fwupd.uefiCapsuleSettings = {
+    DisableShimForSecureBoot = true;
+  };
 }

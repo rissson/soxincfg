@@ -9,6 +9,7 @@
   packages = with pkgs;
     [
       bc
+      efibootmgr
       file
       gnumake
       gptfdisk
