@@ -98,7 +98,7 @@ def uki_dst(bootspec: BootSpec, cmdline: str) -> Path:
 
 
 def sign_file(path: Path) -> None:
-    run([SBCTL, "sign", path])
+    run([SBCTL, "sign", "--save", path])
 
 
 def is_pe_binary(path: Path) -> bool:
