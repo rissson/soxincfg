@@ -52,6 +52,12 @@
       channels = {
         nixpkgs = {
           input = inputs.nixpkgs;
+          patches = [
+            (builtins.fetchurl {
+              url = "https://github.com/NixOS/nixpkgs/pull/531090.patch";
+              sha256 = "16kkqig78hbbvsmarpb864rf903w223wnbn2lxwlc57jqsmk15hv";
+            })
+          ];
           overlaysBuilder = channels: [
             (_: _: {
               inherit
