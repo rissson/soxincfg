@@ -2,11 +2,9 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
 }: {
   imports = [
-    inputs.lanzaboote.nixosModules.lanzaboote
     inputs.nixos-hardware.nixosModules.common-cpu-amd
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
@@ -42,21 +40,19 @@
   boot.kernelModules = ["kvm-amd"];
 
   boot.loader.timeout = 60;
-  boot.loader.systemd-boot = {
-    enable = lib.mkForce false;
-  };
-  boot.lanzaboote = {
+  boot.loader.limine = {
     enable = true;
-    pkiBundle = "/var/lib/sbctl";
-    configurationLimit = 8;
-    measuredBoot = {
-      enable = true;
-      pcrs = [
-        0
-        4
-        7
-      ];
-    };
+    panicOnChecksumMismatch = true;
+    maxGenerations = 8;
+    secureBoot.enable = true;
+    extraConfig = ''
+      measured_boot: yes
+    '';
+    extraEntries = ''
+      /Windows
+        protocol: efi
+        path: guid(d954a06e-55fb-415b-aadd-02446b06dc2e):/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
   };
 
   boot.loader.efi = {
