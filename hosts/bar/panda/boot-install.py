@@ -172,6 +172,13 @@ def build_uki(bootspec: BootSpec, cmdline: str, dst_rel: Path, current: bool) ->
             f"--initrd={initrd}",
             f"--cmdline={cmdline}",
             f"--output={tmp_out}",
+            "--pcr-private-key=/var/lib/sbctl/keys/pcr/tpm2-pcr-private-key-initrd.pem",
+            "--pcr-public-key=/var/lib/sbctl/keys/pcr/tpm2-pcr-public-key-initrd.pem",
+            "--phases=enter-initrd",
+            "--pcr-private-key=/var/lib/sbctl/keys/pcr/tpm2-pcr-private-key.pem",
+            "--pcr-public-key=/var/lib/sbctl/keys/pcr/tpm2-pcr-public-key.pem",
+            "--phases=enter-initrd:leave-initrd enter-initrd:leave-initrd:sysinit enter-initrd:leave-initrd:sysinit:ready",
+            "--pcr-banks=sha256",
         ]
         os_release = bootspec.toplevel / "etc" / "os-release"
         if os_release.is_file():

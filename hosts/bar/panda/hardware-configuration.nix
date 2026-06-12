@@ -36,6 +36,8 @@
     "aes"
     "aesni_intel"
     "cryptd"
+    # tpm
+    "tpm_crb"
   ];
 
   boot.kernelModules = ["kvm-amd"];
@@ -70,12 +72,30 @@
     };
   };
 
+  boot.initrd.systemd.tpm2 = {
+    enable = true;
+    pcrphases.enable = true;
+  };
+  systemd.tpm2 = {
+    enable = true;
+    pcrphases.enable = true;
+  };
+  security.tpm2 = {
+    enable = true;
+    abrmd.enable = true;
+    pkcs11.enable = true;
+
+    tctiEnvironment.enable = true;
+    tctiEnvironment.interface = "tabrmd";
+  };
+
   boot.initrd.luks.devices = {
     cryptroot = {
       device = "/dev/disk/by-id/nvme-Samsung_SSD_990_PRO_1TB_S7HDNS0L310718F-part2";
       preLVM = true;
       allowDiscards = true;
       bypassWorkqueues = true;
+      crypttabExtraOpts = ["tpm2-device=auto" "tpm2-measure-pcr=yes" "tpm2-measure-bank=sha256"];
     };
   };
 
@@ -163,6 +183,7 @@
       device = "rpool/local/var/log";
       fsType = "zfs";
       options = ["zfsutil"];
+      neededForBoot = true;
     };
 
     "/boot" = {

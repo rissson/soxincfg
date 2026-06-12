@@ -98,6 +98,7 @@ with lib; let
     ${cfg.extraInstallCommands}
   '';
 in {
+  systemd.package = pkgs.systemdUkify;
   system.build.installBootLoader = lib.mkForce finalSystemdBootBuilder;
 
   systemd.services.fwupd = {

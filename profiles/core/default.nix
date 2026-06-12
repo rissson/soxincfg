@@ -30,6 +30,8 @@
       screen
       smartmontools
       tcpdump
+      tpm2-tools
+      tpm2-tss
       tree
       unzip
       usbutils
