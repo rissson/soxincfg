@@ -47,41 +47,22 @@
   };
 
   boot.loader.timeout = 60;
-  boot.loader.grub = {
+  boot.loader.systemd-boot = {
     enable = true;
-    device = "nodev";
-    efiSupport = true;
-    enableCryptodisk = true;
-    zfsSupport = true;
   };
 
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/efi";
-  };
-
-  boot.initrd.secrets = {
-    "/crypt.keyfile" = "/persist/secrets/initrd/crypt.keyfile";
-  };
+  boot.loader.efi.canTouchEfiVariables = true;
 
   boot.initrd.luks.devices = {
-    cryptboot = {
-      device = "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNX0T233824B-part2";
-      preLVM = true;
-      allowDiscards = true;
-      keyFile = "/crypt.keyfile";
-    };
     cryptroot = {
       device = "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNX0T233824B-part3";
       preLVM = true;
       allowDiscards = true;
-      keyFile = "/crypt.keyfile";
     };
     cryptswap = {
       device = "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_1TB_S5GXNX0T233824B-part4";
       preLVM = true;
       allowDiscards = true;
-      keyFile = "/crypt.keyfile";
     };
   };
 
@@ -95,14 +76,9 @@
       fsType = "zfs";
     };
 
-    "/efi" = {
-      device = "/dev/disk/by-uuid/580D-49D4";
-      fsType = "vfat";
-    };
-
     "/boot" = {
-      device = "bpool/boot";
-      fsType = "zfs";
+      device = "/dev/disk/by-uuid/DE7D-78D1";
+      fsType = "vfat";
     };
 
     "/nix" = {
