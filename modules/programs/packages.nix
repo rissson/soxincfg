@@ -70,7 +70,6 @@
         xfce.ristretto
         rtl-sdr
         s3cmd
-        signal-desktop
         slack
         speedtest-cli
         spotify
