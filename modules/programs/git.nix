@@ -54,6 +54,7 @@
           st = "status";
           unstage = "reset HEAD --";
           who = "shortlog -s -s";
+          wip = "for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads";
         };
 
         extraConfig = {
