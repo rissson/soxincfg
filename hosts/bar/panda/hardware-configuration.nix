@@ -45,6 +45,7 @@
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot";
   };
+  boot.loader.timeout = 60;
   boot.loader.systemd-boot = {
     enable = true;
     configurationLimit = 10;
