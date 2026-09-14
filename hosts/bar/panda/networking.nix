@@ -28,6 +28,13 @@
           LinkLocalAddressing = "ipv6";
           IPv6AcceptRA = true;
         };
+        dhcpV4Config = {
+          UseDNS = true;
+        };
+        ipv6AcceptRAConfig = {
+          UseDNS = false;
+          UseDomains = false;
+        };
       };
       "10-lan-mgmt-0" = {
         matchConfig.Name = "lan-mgmt-0";
@@ -55,14 +62,13 @@
     };
   };
 
-  services.resolved = {
-    enable = true;
-    settings = {
-      Resolve = {
-        Cache = false;
-      };
-    };
-  };
+  networking.resolvconf.enable = false;
+  services.resolved.enable = false;
+  environment.etc."resolv.conf".text = ''
+    nameserver 172.29.2.254
+    search .
+    options edns0 trust-ad
+  '';
 
   boot.kernel.sysctl = {
     "net.ipv6.conf.cl-home-2050.ra_defrtr_metric" = 512;
