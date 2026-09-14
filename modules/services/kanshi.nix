@@ -28,6 +28,10 @@
                   position = "5360,0";
                   transform = "270";
                 }
+                {
+                  criteria = "HDMI-A-1";
+                  status = "disable";
+                }
               ];
             };
           }
