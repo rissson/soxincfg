@@ -58,7 +58,7 @@
             obs-studio-plugins.droidcam-obs
           ];
         })
-        openboard
+        # openboard
         openldap
         openssl
         parallel
