@@ -28,7 +28,9 @@
         "scanner"
         "users"
         "video"
+        "wpa_supplicant"
       ]
+
       ++ config.soxincfg.users.groups
       ++ (lib.optionals isAdmin ["wheel"] ++ config.soxincfg.users.adminGroups);
 

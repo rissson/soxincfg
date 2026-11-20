@@ -83,9 +83,9 @@
     };
   };
 
-  boot.initrd.postDeviceCommands = lib.mkAfter ''
-    zfs rollback -r rpool/local/root@blank
-  '';
+  # boot.initrd.postDeviceCommands = lib.mkAfter ''
+  #   zfs rollback -r rpool/local/root@blank
+  # '';
 
   fileSystems = {
     "/" = {
